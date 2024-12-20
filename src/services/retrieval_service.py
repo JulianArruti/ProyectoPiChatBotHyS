@@ -1,6 +1,4 @@
-from langchain_cohere import CohereEmbeddings
-from typing import List, Optional
-from src.core.vector_store import VectorStore
+from typing import List
 
 class RetrievalService:
     def __init__(self, vector_store):

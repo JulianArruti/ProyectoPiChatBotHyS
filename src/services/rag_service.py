@@ -1,10 +1,9 @@
 from langchain_cohere import  ChatCohere
-from langchain_cohere.llms import Cohere
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_cohere import CohereRagRetriever
 from langchain_cohere import CohereEmbeddings
-from typing import List, Dict
+from typing import List
 import numpy as np
 import os
 

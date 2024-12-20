@@ -1,0 +1,1 @@
+# La intencion era modularizarlo aqui y llamarlo en las demas funciones, pero no logre sostenerlo con los cambios que fui haciendo.

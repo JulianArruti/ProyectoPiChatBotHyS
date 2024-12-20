@@ -1,7 +1,5 @@
 from langchain_chroma import Chroma  
-from typing import List, Dict, Optional
-from langchain_core.documents import Document
-from langchain_core.embeddings import Embeddings
+from typing import List, Dict
 from langchain_cohere import CohereEmbeddings
 import os 
 

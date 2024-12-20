@@ -13,7 +13,6 @@ import io
 
 app = FastAPI()
 
-
 load_dotenv()
 cohere_client = cohere.Client(os.getenv("COHERE_API_KEY"))
 document_processor = DocumentProcessor()
@@ -23,6 +22,8 @@ vector_store = VectorStore(
 )
 
 retrieval = RetrievalService(vector_store)
+
+# Deberian generarse para cada documento, ya que el aporte de un profesional del área mejoraria la funcionalidad (lo hice con lo que me acuerdo de Higiene y Seguridad de mi facu y viendo los pdfs)
 contextualization = Contextualization(safety_rules={
     "PPE": "Siempre use el equipo de protección personal apropiado.",
     "Procedimientos de Emergencia": "Siga los procedimientos de emergencia del manual de seguridad.",

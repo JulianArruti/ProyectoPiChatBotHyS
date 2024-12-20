@@ -24,7 +24,7 @@ Treshhold de similitud: Se eligio como inicial 0,7 ya que se queria que no respo
 
 La idea completa era generar un sistema completo movil frontend-backend, donde el frontend seria una aplicacion movil, y el backend seria el chatbot, conectado a un login de usuario. Donde planeaba hacer tools para consultas de seguridad laboral, y de ISO. Ademas de que los gerentes podrian consultar informacion de asistencia de los empleados al trabajo y las capacitaciones que se realizan. Y por que no a mas areas como la de ventas y lineas de trabajo. Esta pensado para asistir y dar valor adicional a aplicaciones de gestion desarrolladas para la empresa.
 
-
+Pruebas con el chatbot sobre los nuevos instrumentos y testeos mas robustos. Se lograron solo 3 preguntas simples, las cuales respondio aceptablemente.
 
 
 Uso

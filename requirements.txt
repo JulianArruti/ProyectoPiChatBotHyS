@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+cohere
+langchain-chroma
+chromadb
+pdfplumber
+ipykernel
+pdfplumber

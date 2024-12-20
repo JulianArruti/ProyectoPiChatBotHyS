@@ -7,6 +7,7 @@ from src.core.document_processor import DocumentProcessor
 from src.core.vector_store import VectorStore
 from src.services.retrieval_service import RetrievalService
 from src.services.contextualization import Contextualization
+from src.services.rag_service import RAGService
 from dotenv import load_dotenv
 import io
 
@@ -31,6 +32,7 @@ contextualization = Contextualization(safety_rules={
     "Gestión del cambio": "Evalúe y controle los riesgos asociados a cambios en procesos, equipos o personal.",
 })
 
+rag_service = RAGService(vector_store)
 class QueryRequest(BaseModel):
     query: str
 
@@ -128,19 +130,33 @@ async def query_documents(request: QueryRequest):
 @app.post("/ask_question")
 async def ask_question(request: QueryRequest):
     question = request.query
+    
+    # Obtener resultados y embeddings
     results = retrieval.contextualized_retrieval(question)
     
-    if not contextualization.check_contextual_relevance(question, results):
-        return {"answer": "No estoy seguro de entender su pregunta. ¿Podría clarificarla por favor?"}
+    # Verificar relevancia
+    if not rag_service.check_relevance(question, results):
+        return {
+            "answer": "Lo siento, no tengo información relevante para responder esta pregunta."
+        }
     
+    # Obtener consejos de seguridad
     expert_advice = "\n".join(
         contextualization.check_expert_system(result)
         for result in results
         if contextualization.check_expert_system(result)
     )
     
+    # Generar respuesta usando RAG
+    response = rag_service.generate_response(
+        query=question,
+        context=results,
+        expert_advice=expert_advice
+    )
+    
     return {
-        "results": results,
+        "answer": response,
+        "context_used": results,
         "expert_advice": expert_advice if expert_advice else None
     }
 

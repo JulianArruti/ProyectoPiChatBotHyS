@@ -1,4 +1,4 @@
-from langchain_community.embeddings import CohereEmbeddings
+from langchain_cohere import CohereEmbeddings
 from typing import List, Dict
 
 class EmbeddingService:
